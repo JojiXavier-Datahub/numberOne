@@ -1,15 +1,15 @@
 import 'dart:developer';
-import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
+import '../../Domain/Core/api_endpoints.dart';
+import '../../Domain/Languages/Service/course_services.dart';
+import '../../Domain/Core/NetworkServices/network_services.dart';
 import 'package:number_one_academy_v2/Domain/Core/Failure/main_failure.dart';
 import 'package:number_one_academy_v2/Domain/Coupon/Model/coupon_model.dart';
 import 'package:number_one_academy_v2/Domain/CourseGet/Model/course_get.dart';
 import 'package:number_one_academy_v2/Domain/CourseList/Model/course_list.dart';
 import 'package:number_one_academy_v2/Domain/VideoGet/Model/video_get_model.dart';
-import '../../Domain/Core/NetworkServices/network_services.dart';
-import '../../Domain/Core/api_endpoints.dart';
-import '../../Domain/Languages/Service/course_services.dart';
 
 @LazySingleton(as: CourseService)
 class CourseRepositoty implements CourseService {
@@ -41,19 +41,19 @@ class CourseRepositoty implements CourseService {
       {required int page,
       required int perPage,
       required String search,
-      required bool free,
+      // required bool free,
       required String instructorId}) async {
-    var value = free ? "&courseType=free" : "";
+    // var value = free ? "&courseType=free" : "";
     var instructorIdValue =
         instructorId == "" ? "" : "&courseInstructors=$instructorId";
     final Either<MainFailure, Response> response = await _networkService.getRequest(
-        "${ApiEndPoints.courseList}&page=$page&pageSize=$perPage&query=$search$value$instructorIdValue");
+        "${ApiEndPoints.courseList}&page=$page&pageSize=$perPage&query=$search$instructorIdValue");
 
     return await response.fold((error) {
       return left(error);
-    }, (result) async {
+    }, (result) {
       CourseList courseList = CourseList.fromJson(result.data);
-
+      log('Search Len ${courseList.list!.length}');
       return right(courseList);
     });
   }

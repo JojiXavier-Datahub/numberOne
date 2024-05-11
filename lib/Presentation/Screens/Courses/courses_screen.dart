@@ -1,25 +1,25 @@
-import 'dart:developer';
 import 'dart:io';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'dart:developer';
 import 'package:flutter_svg/svg.dart';
-import 'package:number_one_academy_v2/Application/Insructor/instructor_bloc.dart';
-import 'package:number_one_academy_v2/Application/course_list/course_list_bloc.dart';
-import 'package:number_one_academy_v2/Application/subscription/subscription_bloc.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import '../../Widgets/course_gridwidget.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:number_one_academy_v2/Config/pages.dart';
+import 'package:number_one_academy_v2/Utils/colors.dart';
 import 'package:number_one_academy_v2/Config/routers.dart';
-import 'package:number_one_academy_v2/Presentation/Screens/Details/widgets/custom_elevated_button.dart';
-import 'package:number_one_academy_v2/Presentation/Screens/couse_learner/widget/instructor_card.dart';
-import 'package:number_one_academy_v2/Presentation/Screens/instructors/instructor_profile.dart';
-import 'package:number_one_academy_v2/Presentation/Screens/purchase/purchase_screen.dart';
-import 'package:number_one_academy_v2/Presentation/Screens/styles/text_styles.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:number_one_academy_v2/Utils/constants.dart';
 import 'package:number_one_academy_v2/Presentation/Widgets/doted_lines.dart';
 import 'package:number_one_academy_v2/Presentation/Widgets/shimmer_widget.dart';
-import 'package:number_one_academy_v2/Utils/colors.dart';
-import 'package:number_one_academy_v2/Utils/constants.dart';
-import '../../Widgets/course_gridwidget.dart';
+import 'package:number_one_academy_v2/Application/Insructor/instructor_bloc.dart';
+import 'package:number_one_academy_v2/Presentation/Screens/styles/text_styles.dart';
+import 'package:number_one_academy_v2/Application/course_list/course_list_bloc.dart';
+import 'package:number_one_academy_v2/Application/subscription/subscription_bloc.dart';
+import 'package:number_one_academy_v2/Presentation/Screens/purchase/purchase_screen.dart';
+import 'package:number_one_academy_v2/Presentation/Screens/instructors/instructor_profile.dart';
+import 'package:number_one_academy_v2/Presentation/Screens/couse_learner/widget/instructor_card.dart';
+import 'package:number_one_academy_v2/Presentation/Screens/Details/widgets/custom_elevated_button.dart';
 
 // ignore: must_be_immutable
 class CoursesScreen extends StatelessWidget {
@@ -110,6 +110,7 @@ class CoursesScreen extends StatelessWidget {
               builder: (context, state) {
             return CourseGridWidget(
               isFreeOrSubscribedCourses: true,
+              isFreeCource: true,
               mainButtonOnTap: () {},
               courselist: state.courseList?.list ?? [],
               gridTitle: "Free Courses",
@@ -165,7 +166,6 @@ class CoursesScreen extends StatelessWidget {
               },
             );
           }),
-          
           Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 10,

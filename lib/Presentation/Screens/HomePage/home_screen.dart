@@ -1,21 +1,18 @@
 import 'dart:developer';
-
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'package:number_one_academy_v2/Application/Insructor/instructor_bloc.dart';
-import 'package:number_one_academy_v2/Application/course_list/course_list_bloc.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:number_one_academy_v2/Config/pages.dart';
-import 'package:number_one_academy_v2/Config/routers.dart';
-import 'package:number_one_academy_v2/Presentation/Screens/Courses/Widget/resume_single_widget.dart';
-import 'package:number_one_academy_v2/Presentation/Screens/MyCourses/my_courses_screen.dart';
-
-import 'package:number_one_academy_v2/Presentation/Widgets/course_gridwidget.dart';
-import 'package:number_one_academy_v2/Presentation/Widgets/text_custom.dart';
 import 'package:number_one_academy_v2/Utils/colors.dart';
+import 'package:number_one_academy_v2/Config/routers.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:number_one_academy_v2/Utils/constants.dart';
+import 'package:number_one_academy_v2/Presentation/Widgets/text_custom.dart';
+import 'package:number_one_academy_v2/Application/Insructor/instructor_bloc.dart';
+import 'package:number_one_academy_v2/Presentation/Widgets/course_gridwidget.dart';
+import 'package:number_one_academy_v2/Application/course_list/course_list_bloc.dart';
+import 'package:number_one_academy_v2/Presentation/Screens/MyCourses/my_courses_screen.dart';
+import 'package:number_one_academy_v2/Presentation/Screens/Courses/Widget/resume_single_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -265,6 +262,7 @@ class HomeScreen extends StatelessWidget {
           BlocBuilder<CourseListBloc, CourseListState>(
               builder: (context, state) {
             return CourseGridWidget(
+              isFreeCource: false,
               isFreeOrSubscribedCourses: subscribedOrNot != "" ? true : false,
               mainButtonOnTap: () {},
               courselist: state.courseList?.list ?? [],
@@ -347,21 +345,16 @@ class HomeScreen extends StatelessWidget {
                         child: GestureDetector(
                           onTap: () {
                             Navigator.push(
-                                        context,
-                                        PageRouteBuilder(
-                                          pageBuilder: (context, animation1,
-                                                  animation2) =>
-                                              const MyCourseScreen(
-                                                id: 1,
-                                            
-                                                  
-                                          ),
-                                          transitionDuration:
-                                              const Duration(seconds: 0),
-                                        ),
-                                      );
-
-
+                              context,
+                              PageRouteBuilder(
+                                pageBuilder:
+                                    (context, animation1, animation2) =>
+                                        const MyCourseScreen(
+                                  id: 1,
+                                ),
+                                transitionDuration: const Duration(seconds: 0),
+                              ),
+                            );
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -382,7 +375,7 @@ class HomeScreen extends StatelessWidget {
                                 ),
                                 child: Icon(
                                   Icons.navigate_next_sharp,
-                                    size: 16,
+                                  size: 16,
                                   color: secondaryColor,
                                 ),
                               )
@@ -421,6 +414,7 @@ class HomeScreen extends StatelessWidget {
           BlocBuilder<CourseListBloc, CourseListState>(
               builder: (context, state) {
             return CourseGridWidget(
+              isFreeCource: false,
               isFreeOrSubscribedCourses: subscribedOrNot != "" ? true : false,
               mainButtonOnTap: () {},
               courselist: state.courseList?.list ?? [],

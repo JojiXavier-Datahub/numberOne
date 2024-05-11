@@ -27,9 +27,12 @@ class CourseSearchBar extends StatelessWidget {
         ],
       ),
       child: TextFormField(
+        textAlign: TextAlign.start,
+        // textAlignVertical: TextAlignVertical.top,
         controller: controller,
         onChanged: onChanged,
         decoration: const InputDecoration(
+          contentPadding: EdgeInsets.zero,
           border: InputBorder.none,
           prefixIcon: Icon(
             Icons.search_rounded,

@@ -19,6 +19,8 @@ mixin _$CourseListEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String search, String instructorId) getCourseList,
+    required TResult Function(String search, bool nextPage, bool previousPage)
+        searchCourseList,
     required TResult Function(String id) getCourse,
     required TResult Function(List<String> id) getVideo,
     required TResult Function(int index) changeChapterIndex,
@@ -33,6 +35,8 @@ mixin _$CourseListEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String search, String instructorId)? getCourseList,
+    TResult? Function(String search, bool nextPage, bool previousPage)?
+        searchCourseList,
     TResult? Function(String id)? getCourse,
     TResult? Function(List<String> id)? getVideo,
     TResult? Function(int index)? changeChapterIndex,
@@ -46,6 +50,8 @@ mixin _$CourseListEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String search, String instructorId)? getCourseList,
+    TResult Function(String search, bool nextPage, bool previousPage)?
+        searchCourseList,
     TResult Function(String id)? getCourse,
     TResult Function(List<String> id)? getVideo,
     TResult Function(int index)? changeChapterIndex,
@@ -59,7 +65,8 @@ mixin _$CourseListEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetCourseList value) getCourseList,
+    required TResult Function(GetCourseList value) getCourseList,
+    required TResult Function(SearchCourseList value) searchCourseList,
     required TResult Function(_GetCourse value) getCourse,
     required TResult Function(_GetVideo value) getVideo,
     required TResult Function(_ChangeChapterIndex value) changeChapterIndex,
@@ -73,7 +80,8 @@ mixin _$CourseListEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetCourseList value)? getCourseList,
+    TResult? Function(GetCourseList value)? getCourseList,
+    TResult? Function(SearchCourseList value)? searchCourseList,
     TResult? Function(_GetCourse value)? getCourse,
     TResult? Function(_GetVideo value)? getVideo,
     TResult? Function(_ChangeChapterIndex value)? changeChapterIndex,
@@ -86,7 +94,8 @@ mixin _$CourseListEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetCourseList value)? getCourseList,
+    TResult Function(GetCourseList value)? getCourseList,
+    TResult Function(SearchCourseList value)? searchCourseList,
     TResult Function(_GetCourse value)? getCourse,
     TResult Function(_GetVideo value)? getVideo,
     TResult Function(_ChangeChapterIndex value)? changeChapterIndex,
@@ -156,7 +165,7 @@ class __$$GetCourseListImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$GetCourseListImpl implements _GetCourseList {
+class _$GetCourseListImpl implements GetCourseList {
   const _$GetCourseListImpl({required this.search, required this.instructorId});
 
   @override
@@ -192,6 +201,8 @@ class _$GetCourseListImpl implements _GetCourseList {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String search, String instructorId) getCourseList,
+    required TResult Function(String search, bool nextPage, bool previousPage)
+        searchCourseList,
     required TResult Function(String id) getCourse,
     required TResult Function(List<String> id) getVideo,
     required TResult Function(int index) changeChapterIndex,
@@ -209,6 +220,8 @@ class _$GetCourseListImpl implements _GetCourseList {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String search, String instructorId)? getCourseList,
+    TResult? Function(String search, bool nextPage, bool previousPage)?
+        searchCourseList,
     TResult? Function(String id)? getCourse,
     TResult? Function(List<String> id)? getVideo,
     TResult? Function(int index)? changeChapterIndex,
@@ -225,6 +238,8 @@ class _$GetCourseListImpl implements _GetCourseList {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String search, String instructorId)? getCourseList,
+    TResult Function(String search, bool nextPage, bool previousPage)?
+        searchCourseList,
     TResult Function(String id)? getCourse,
     TResult Function(List<String> id)? getVideo,
     TResult Function(int index)? changeChapterIndex,
@@ -244,7 +259,8 @@ class _$GetCourseListImpl implements _GetCourseList {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetCourseList value) getCourseList,
+    required TResult Function(GetCourseList value) getCourseList,
+    required TResult Function(SearchCourseList value) searchCourseList,
     required TResult Function(_GetCourse value) getCourse,
     required TResult Function(_GetVideo value) getVideo,
     required TResult Function(_ChangeChapterIndex value) changeChapterIndex,
@@ -261,7 +277,8 @@ class _$GetCourseListImpl implements _GetCourseList {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetCourseList value)? getCourseList,
+    TResult? Function(GetCourseList value)? getCourseList,
+    TResult? Function(SearchCourseList value)? searchCourseList,
     TResult? Function(_GetCourse value)? getCourse,
     TResult? Function(_GetVideo value)? getVideo,
     TResult? Function(_ChangeChapterIndex value)? changeChapterIndex,
@@ -277,7 +294,8 @@ class _$GetCourseListImpl implements _GetCourseList {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetCourseList value)? getCourseList,
+    TResult Function(GetCourseList value)? getCourseList,
+    TResult Function(SearchCourseList value)? searchCourseList,
     TResult Function(_GetCourse value)? getCourse,
     TResult Function(_GetVideo value)? getVideo,
     TResult Function(_ChangeChapterIndex value)? changeChapterIndex,
@@ -295,8 +313,8 @@ class _$GetCourseListImpl implements _GetCourseList {
   }
 }
 
-abstract class _GetCourseList implements CourseListEvent {
-  const factory _GetCourseList(
+abstract class GetCourseList implements CourseListEvent {
+  const factory GetCourseList(
       {required final String search,
       required final String instructorId}) = _$GetCourseListImpl;
 
@@ -304,6 +322,219 @@ abstract class _GetCourseList implements CourseListEvent {
   String get instructorId;
   @JsonKey(ignore: true)
   _$$GetCourseListImplCopyWith<_$GetCourseListImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SearchCourseListImplCopyWith<$Res> {
+  factory _$$SearchCourseListImplCopyWith(_$SearchCourseListImpl value,
+          $Res Function(_$SearchCourseListImpl) then) =
+      __$$SearchCourseListImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String search, bool nextPage, bool previousPage});
+}
+
+/// @nodoc
+class __$$SearchCourseListImplCopyWithImpl<$Res>
+    extends _$CourseListEventCopyWithImpl<$Res, _$SearchCourseListImpl>
+    implements _$$SearchCourseListImplCopyWith<$Res> {
+  __$$SearchCourseListImplCopyWithImpl(_$SearchCourseListImpl _value,
+      $Res Function(_$SearchCourseListImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? search = null,
+    Object? nextPage = null,
+    Object? previousPage = null,
+  }) {
+    return _then(_$SearchCourseListImpl(
+      search: null == search
+          ? _value.search
+          : search // ignore: cast_nullable_to_non_nullable
+              as String,
+      nextPage: null == nextPage
+          ? _value.nextPage
+          : nextPage // ignore: cast_nullable_to_non_nullable
+              as bool,
+      previousPage: null == previousPage
+          ? _value.previousPage
+          : previousPage // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SearchCourseListImpl implements SearchCourseList {
+  const _$SearchCourseListImpl(
+      {required this.search,
+      required this.nextPage,
+      required this.previousPage});
+
+  @override
+  final String search;
+  @override
+  final bool nextPage;
+  @override
+  final bool previousPage;
+
+  @override
+  String toString() {
+    return 'CourseListEvent.searchCourseList(search: $search, nextPage: $nextPage, previousPage: $previousPage)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SearchCourseListImpl &&
+            (identical(other.search, search) || other.search == search) &&
+            (identical(other.nextPage, nextPage) ||
+                other.nextPage == nextPage) &&
+            (identical(other.previousPage, previousPage) ||
+                other.previousPage == previousPage));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, search, nextPage, previousPage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SearchCourseListImplCopyWith<_$SearchCourseListImpl> get copyWith =>
+      __$$SearchCourseListImplCopyWithImpl<_$SearchCourseListImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String search, String instructorId) getCourseList,
+    required TResult Function(String search, bool nextPage, bool previousPage)
+        searchCourseList,
+    required TResult Function(String id) getCourse,
+    required TResult Function(List<String> id) getVideo,
+    required TResult Function(int index) changeChapterIndex,
+    required TResult Function() clearInstructorListByCourses,
+    required TResult Function() videoPause,
+    required TResult Function(VideoGetModel videoid) initializeVIdeoPlayer,
+    required TResult Function(
+            String couponCode, String productType, String productId)
+        applyCoupon,
+  }) {
+    return searchCourseList(search, nextPage, previousPage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String search, String instructorId)? getCourseList,
+    TResult? Function(String search, bool nextPage, bool previousPage)?
+        searchCourseList,
+    TResult? Function(String id)? getCourse,
+    TResult? Function(List<String> id)? getVideo,
+    TResult? Function(int index)? changeChapterIndex,
+    TResult? Function()? clearInstructorListByCourses,
+    TResult? Function()? videoPause,
+    TResult? Function(VideoGetModel videoid)? initializeVIdeoPlayer,
+    TResult? Function(String couponCode, String productType, String productId)?
+        applyCoupon,
+  }) {
+    return searchCourseList?.call(search, nextPage, previousPage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String search, String instructorId)? getCourseList,
+    TResult Function(String search, bool nextPage, bool previousPage)?
+        searchCourseList,
+    TResult Function(String id)? getCourse,
+    TResult Function(List<String> id)? getVideo,
+    TResult Function(int index)? changeChapterIndex,
+    TResult Function()? clearInstructorListByCourses,
+    TResult Function()? videoPause,
+    TResult Function(VideoGetModel videoid)? initializeVIdeoPlayer,
+    TResult Function(String couponCode, String productType, String productId)?
+        applyCoupon,
+    required TResult orElse(),
+  }) {
+    if (searchCourseList != null) {
+      return searchCourseList(search, nextPage, previousPage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetCourseList value) getCourseList,
+    required TResult Function(SearchCourseList value) searchCourseList,
+    required TResult Function(_GetCourse value) getCourse,
+    required TResult Function(_GetVideo value) getVideo,
+    required TResult Function(_ChangeChapterIndex value) changeChapterIndex,
+    required TResult Function(_ClearInstructorListByCourses value)
+        clearInstructorListByCourses,
+    required TResult Function(_VideoPause value) videoPause,
+    required TResult Function(_InitializeVIdeoPlayer value)
+        initializeVIdeoPlayer,
+    required TResult Function(_ApplyCoupon value) applyCoupon,
+  }) {
+    return searchCourseList(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetCourseList value)? getCourseList,
+    TResult? Function(SearchCourseList value)? searchCourseList,
+    TResult? Function(_GetCourse value)? getCourse,
+    TResult? Function(_GetVideo value)? getVideo,
+    TResult? Function(_ChangeChapterIndex value)? changeChapterIndex,
+    TResult? Function(_ClearInstructorListByCourses value)?
+        clearInstructorListByCourses,
+    TResult? Function(_VideoPause value)? videoPause,
+    TResult? Function(_InitializeVIdeoPlayer value)? initializeVIdeoPlayer,
+    TResult? Function(_ApplyCoupon value)? applyCoupon,
+  }) {
+    return searchCourseList?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetCourseList value)? getCourseList,
+    TResult Function(SearchCourseList value)? searchCourseList,
+    TResult Function(_GetCourse value)? getCourse,
+    TResult Function(_GetVideo value)? getVideo,
+    TResult Function(_ChangeChapterIndex value)? changeChapterIndex,
+    TResult Function(_ClearInstructorListByCourses value)?
+        clearInstructorListByCourses,
+    TResult Function(_VideoPause value)? videoPause,
+    TResult Function(_InitializeVIdeoPlayer value)? initializeVIdeoPlayer,
+    TResult Function(_ApplyCoupon value)? applyCoupon,
+    required TResult orElse(),
+  }) {
+    if (searchCourseList != null) {
+      return searchCourseList(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SearchCourseList implements CourseListEvent {
+  const factory SearchCourseList(
+      {required final String search,
+      required final bool nextPage,
+      required final bool previousPage}) = _$SearchCourseListImpl;
+
+  String get search;
+  bool get nextPage;
+  bool get previousPage;
+  @JsonKey(ignore: true)
+  _$$SearchCourseListImplCopyWith<_$SearchCourseListImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -372,6 +603,8 @@ class _$GetCourseImpl implements _GetCourse {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String search, String instructorId) getCourseList,
+    required TResult Function(String search, bool nextPage, bool previousPage)
+        searchCourseList,
     required TResult Function(String id) getCourse,
     required TResult Function(List<String> id) getVideo,
     required TResult Function(int index) changeChapterIndex,
@@ -389,6 +622,8 @@ class _$GetCourseImpl implements _GetCourse {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String search, String instructorId)? getCourseList,
+    TResult? Function(String search, bool nextPage, bool previousPage)?
+        searchCourseList,
     TResult? Function(String id)? getCourse,
     TResult? Function(List<String> id)? getVideo,
     TResult? Function(int index)? changeChapterIndex,
@@ -405,6 +640,8 @@ class _$GetCourseImpl implements _GetCourse {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String search, String instructorId)? getCourseList,
+    TResult Function(String search, bool nextPage, bool previousPage)?
+        searchCourseList,
     TResult Function(String id)? getCourse,
     TResult Function(List<String> id)? getVideo,
     TResult Function(int index)? changeChapterIndex,
@@ -424,7 +661,8 @@ class _$GetCourseImpl implements _GetCourse {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetCourseList value) getCourseList,
+    required TResult Function(GetCourseList value) getCourseList,
+    required TResult Function(SearchCourseList value) searchCourseList,
     required TResult Function(_GetCourse value) getCourse,
     required TResult Function(_GetVideo value) getVideo,
     required TResult Function(_ChangeChapterIndex value) changeChapterIndex,
@@ -441,7 +679,8 @@ class _$GetCourseImpl implements _GetCourse {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetCourseList value)? getCourseList,
+    TResult? Function(GetCourseList value)? getCourseList,
+    TResult? Function(SearchCourseList value)? searchCourseList,
     TResult? Function(_GetCourse value)? getCourse,
     TResult? Function(_GetVideo value)? getVideo,
     TResult? Function(_ChangeChapterIndex value)? changeChapterIndex,
@@ -457,7 +696,8 @@ class _$GetCourseImpl implements _GetCourse {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetCourseList value)? getCourseList,
+    TResult Function(GetCourseList value)? getCourseList,
+    TResult Function(SearchCourseList value)? searchCourseList,
     TResult Function(_GetCourse value)? getCourse,
     TResult Function(_GetVideo value)? getVideo,
     TResult Function(_ChangeChapterIndex value)? changeChapterIndex,
@@ -555,6 +795,8 @@ class _$GetVideoImpl implements _GetVideo {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String search, String instructorId) getCourseList,
+    required TResult Function(String search, bool nextPage, bool previousPage)
+        searchCourseList,
     required TResult Function(String id) getCourse,
     required TResult Function(List<String> id) getVideo,
     required TResult Function(int index) changeChapterIndex,
@@ -572,6 +814,8 @@ class _$GetVideoImpl implements _GetVideo {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String search, String instructorId)? getCourseList,
+    TResult? Function(String search, bool nextPage, bool previousPage)?
+        searchCourseList,
     TResult? Function(String id)? getCourse,
     TResult? Function(List<String> id)? getVideo,
     TResult? Function(int index)? changeChapterIndex,
@@ -588,6 +832,8 @@ class _$GetVideoImpl implements _GetVideo {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String search, String instructorId)? getCourseList,
+    TResult Function(String search, bool nextPage, bool previousPage)?
+        searchCourseList,
     TResult Function(String id)? getCourse,
     TResult Function(List<String> id)? getVideo,
     TResult Function(int index)? changeChapterIndex,
@@ -607,7 +853,8 @@ class _$GetVideoImpl implements _GetVideo {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetCourseList value) getCourseList,
+    required TResult Function(GetCourseList value) getCourseList,
+    required TResult Function(SearchCourseList value) searchCourseList,
     required TResult Function(_GetCourse value) getCourse,
     required TResult Function(_GetVideo value) getVideo,
     required TResult Function(_ChangeChapterIndex value) changeChapterIndex,
@@ -624,7 +871,8 @@ class _$GetVideoImpl implements _GetVideo {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetCourseList value)? getCourseList,
+    TResult? Function(GetCourseList value)? getCourseList,
+    TResult? Function(SearchCourseList value)? searchCourseList,
     TResult? Function(_GetCourse value)? getCourse,
     TResult? Function(_GetVideo value)? getVideo,
     TResult? Function(_ChangeChapterIndex value)? changeChapterIndex,
@@ -640,7 +888,8 @@ class _$GetVideoImpl implements _GetVideo {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetCourseList value)? getCourseList,
+    TResult Function(GetCourseList value)? getCourseList,
+    TResult Function(SearchCourseList value)? searchCourseList,
     TResult Function(_GetCourse value)? getCourse,
     TResult Function(_GetVideo value)? getVideo,
     TResult Function(_ChangeChapterIndex value)? changeChapterIndex,
@@ -733,6 +982,8 @@ class _$ChangeChapterIndexImpl implements _ChangeChapterIndex {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String search, String instructorId) getCourseList,
+    required TResult Function(String search, bool nextPage, bool previousPage)
+        searchCourseList,
     required TResult Function(String id) getCourse,
     required TResult Function(List<String> id) getVideo,
     required TResult Function(int index) changeChapterIndex,
@@ -750,6 +1001,8 @@ class _$ChangeChapterIndexImpl implements _ChangeChapterIndex {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String search, String instructorId)? getCourseList,
+    TResult? Function(String search, bool nextPage, bool previousPage)?
+        searchCourseList,
     TResult? Function(String id)? getCourse,
     TResult? Function(List<String> id)? getVideo,
     TResult? Function(int index)? changeChapterIndex,
@@ -766,6 +1019,8 @@ class _$ChangeChapterIndexImpl implements _ChangeChapterIndex {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String search, String instructorId)? getCourseList,
+    TResult Function(String search, bool nextPage, bool previousPage)?
+        searchCourseList,
     TResult Function(String id)? getCourse,
     TResult Function(List<String> id)? getVideo,
     TResult Function(int index)? changeChapterIndex,
@@ -785,7 +1040,8 @@ class _$ChangeChapterIndexImpl implements _ChangeChapterIndex {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetCourseList value) getCourseList,
+    required TResult Function(GetCourseList value) getCourseList,
+    required TResult Function(SearchCourseList value) searchCourseList,
     required TResult Function(_GetCourse value) getCourse,
     required TResult Function(_GetVideo value) getVideo,
     required TResult Function(_ChangeChapterIndex value) changeChapterIndex,
@@ -802,7 +1058,8 @@ class _$ChangeChapterIndexImpl implements _ChangeChapterIndex {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetCourseList value)? getCourseList,
+    TResult? Function(GetCourseList value)? getCourseList,
+    TResult? Function(SearchCourseList value)? searchCourseList,
     TResult? Function(_GetCourse value)? getCourse,
     TResult? Function(_GetVideo value)? getVideo,
     TResult? Function(_ChangeChapterIndex value)? changeChapterIndex,
@@ -818,7 +1075,8 @@ class _$ChangeChapterIndexImpl implements _ChangeChapterIndex {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetCourseList value)? getCourseList,
+    TResult Function(GetCourseList value)? getCourseList,
+    TResult Function(SearchCourseList value)? searchCourseList,
     TResult Function(_GetCourse value)? getCourse,
     TResult Function(_GetVideo value)? getVideo,
     TResult Function(_ChangeChapterIndex value)? changeChapterIndex,
@@ -890,6 +1148,8 @@ class _$ClearInstructorListByCoursesImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String search, String instructorId) getCourseList,
+    required TResult Function(String search, bool nextPage, bool previousPage)
+        searchCourseList,
     required TResult Function(String id) getCourse,
     required TResult Function(List<String> id) getVideo,
     required TResult Function(int index) changeChapterIndex,
@@ -907,6 +1167,8 @@ class _$ClearInstructorListByCoursesImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String search, String instructorId)? getCourseList,
+    TResult? Function(String search, bool nextPage, bool previousPage)?
+        searchCourseList,
     TResult? Function(String id)? getCourse,
     TResult? Function(List<String> id)? getVideo,
     TResult? Function(int index)? changeChapterIndex,
@@ -923,6 +1185,8 @@ class _$ClearInstructorListByCoursesImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String search, String instructorId)? getCourseList,
+    TResult Function(String search, bool nextPage, bool previousPage)?
+        searchCourseList,
     TResult Function(String id)? getCourse,
     TResult Function(List<String> id)? getVideo,
     TResult Function(int index)? changeChapterIndex,
@@ -942,7 +1206,8 @@ class _$ClearInstructorListByCoursesImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetCourseList value) getCourseList,
+    required TResult Function(GetCourseList value) getCourseList,
+    required TResult Function(SearchCourseList value) searchCourseList,
     required TResult Function(_GetCourse value) getCourse,
     required TResult Function(_GetVideo value) getVideo,
     required TResult Function(_ChangeChapterIndex value) changeChapterIndex,
@@ -959,7 +1224,8 @@ class _$ClearInstructorListByCoursesImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetCourseList value)? getCourseList,
+    TResult? Function(GetCourseList value)? getCourseList,
+    TResult? Function(SearchCourseList value)? searchCourseList,
     TResult? Function(_GetCourse value)? getCourse,
     TResult? Function(_GetVideo value)? getVideo,
     TResult? Function(_ChangeChapterIndex value)? changeChapterIndex,
@@ -975,7 +1241,8 @@ class _$ClearInstructorListByCoursesImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetCourseList value)? getCourseList,
+    TResult Function(GetCourseList value)? getCourseList,
+    TResult Function(SearchCourseList value)? searchCourseList,
     TResult Function(_GetCourse value)? getCourse,
     TResult Function(_GetVideo value)? getVideo,
     TResult Function(_ChangeChapterIndex value)? changeChapterIndex,
@@ -1037,6 +1304,8 @@ class _$VideoPauseImpl implements _VideoPause {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String search, String instructorId) getCourseList,
+    required TResult Function(String search, bool nextPage, bool previousPage)
+        searchCourseList,
     required TResult Function(String id) getCourse,
     required TResult Function(List<String> id) getVideo,
     required TResult Function(int index) changeChapterIndex,
@@ -1054,6 +1323,8 @@ class _$VideoPauseImpl implements _VideoPause {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String search, String instructorId)? getCourseList,
+    TResult? Function(String search, bool nextPage, bool previousPage)?
+        searchCourseList,
     TResult? Function(String id)? getCourse,
     TResult? Function(List<String> id)? getVideo,
     TResult? Function(int index)? changeChapterIndex,
@@ -1070,6 +1341,8 @@ class _$VideoPauseImpl implements _VideoPause {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String search, String instructorId)? getCourseList,
+    TResult Function(String search, bool nextPage, bool previousPage)?
+        searchCourseList,
     TResult Function(String id)? getCourse,
     TResult Function(List<String> id)? getVideo,
     TResult Function(int index)? changeChapterIndex,
@@ -1089,7 +1362,8 @@ class _$VideoPauseImpl implements _VideoPause {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetCourseList value) getCourseList,
+    required TResult Function(GetCourseList value) getCourseList,
+    required TResult Function(SearchCourseList value) searchCourseList,
     required TResult Function(_GetCourse value) getCourse,
     required TResult Function(_GetVideo value) getVideo,
     required TResult Function(_ChangeChapterIndex value) changeChapterIndex,
@@ -1106,7 +1380,8 @@ class _$VideoPauseImpl implements _VideoPause {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetCourseList value)? getCourseList,
+    TResult? Function(GetCourseList value)? getCourseList,
+    TResult? Function(SearchCourseList value)? searchCourseList,
     TResult? Function(_GetCourse value)? getCourse,
     TResult? Function(_GetVideo value)? getVideo,
     TResult? Function(_ChangeChapterIndex value)? changeChapterIndex,
@@ -1122,7 +1397,8 @@ class _$VideoPauseImpl implements _VideoPause {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetCourseList value)? getCourseList,
+    TResult Function(GetCourseList value)? getCourseList,
+    TResult Function(SearchCourseList value)? searchCourseList,
     TResult Function(_GetCourse value)? getCourse,
     TResult Function(_GetVideo value)? getVideo,
     TResult Function(_ChangeChapterIndex value)? changeChapterIndex,
@@ -1211,6 +1487,8 @@ class _$InitializeVIdeoPlayerImpl implements _InitializeVIdeoPlayer {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String search, String instructorId) getCourseList,
+    required TResult Function(String search, bool nextPage, bool previousPage)
+        searchCourseList,
     required TResult Function(String id) getCourse,
     required TResult Function(List<String> id) getVideo,
     required TResult Function(int index) changeChapterIndex,
@@ -1228,6 +1506,8 @@ class _$InitializeVIdeoPlayerImpl implements _InitializeVIdeoPlayer {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String search, String instructorId)? getCourseList,
+    TResult? Function(String search, bool nextPage, bool previousPage)?
+        searchCourseList,
     TResult? Function(String id)? getCourse,
     TResult? Function(List<String> id)? getVideo,
     TResult? Function(int index)? changeChapterIndex,
@@ -1244,6 +1524,8 @@ class _$InitializeVIdeoPlayerImpl implements _InitializeVIdeoPlayer {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String search, String instructorId)? getCourseList,
+    TResult Function(String search, bool nextPage, bool previousPage)?
+        searchCourseList,
     TResult Function(String id)? getCourse,
     TResult Function(List<String> id)? getVideo,
     TResult Function(int index)? changeChapterIndex,
@@ -1263,7 +1545,8 @@ class _$InitializeVIdeoPlayerImpl implements _InitializeVIdeoPlayer {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetCourseList value) getCourseList,
+    required TResult Function(GetCourseList value) getCourseList,
+    required TResult Function(SearchCourseList value) searchCourseList,
     required TResult Function(_GetCourse value) getCourse,
     required TResult Function(_GetVideo value) getVideo,
     required TResult Function(_ChangeChapterIndex value) changeChapterIndex,
@@ -1280,7 +1563,8 @@ class _$InitializeVIdeoPlayerImpl implements _InitializeVIdeoPlayer {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetCourseList value)? getCourseList,
+    TResult? Function(GetCourseList value)? getCourseList,
+    TResult? Function(SearchCourseList value)? searchCourseList,
     TResult? Function(_GetCourse value)? getCourse,
     TResult? Function(_GetVideo value)? getVideo,
     TResult? Function(_ChangeChapterIndex value)? changeChapterIndex,
@@ -1296,7 +1580,8 @@ class _$InitializeVIdeoPlayerImpl implements _InitializeVIdeoPlayer {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetCourseList value)? getCourseList,
+    TResult Function(GetCourseList value)? getCourseList,
+    TResult Function(SearchCourseList value)? searchCourseList,
     TResult Function(_GetCourse value)? getCourse,
     TResult Function(_GetVideo value)? getVideo,
     TResult Function(_ChangeChapterIndex value)? changeChapterIndex,
@@ -1412,6 +1697,8 @@ class _$ApplyCouponImpl implements _ApplyCoupon {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String search, String instructorId) getCourseList,
+    required TResult Function(String search, bool nextPage, bool previousPage)
+        searchCourseList,
     required TResult Function(String id) getCourse,
     required TResult Function(List<String> id) getVideo,
     required TResult Function(int index) changeChapterIndex,
@@ -1429,6 +1716,8 @@ class _$ApplyCouponImpl implements _ApplyCoupon {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String search, String instructorId)? getCourseList,
+    TResult? Function(String search, bool nextPage, bool previousPage)?
+        searchCourseList,
     TResult? Function(String id)? getCourse,
     TResult? Function(List<String> id)? getVideo,
     TResult? Function(int index)? changeChapterIndex,
@@ -1445,6 +1734,8 @@ class _$ApplyCouponImpl implements _ApplyCoupon {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String search, String instructorId)? getCourseList,
+    TResult Function(String search, bool nextPage, bool previousPage)?
+        searchCourseList,
     TResult Function(String id)? getCourse,
     TResult Function(List<String> id)? getVideo,
     TResult Function(int index)? changeChapterIndex,
@@ -1464,7 +1755,8 @@ class _$ApplyCouponImpl implements _ApplyCoupon {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GetCourseList value) getCourseList,
+    required TResult Function(GetCourseList value) getCourseList,
+    required TResult Function(SearchCourseList value) searchCourseList,
     required TResult Function(_GetCourse value) getCourse,
     required TResult Function(_GetVideo value) getVideo,
     required TResult Function(_ChangeChapterIndex value) changeChapterIndex,
@@ -1481,7 +1773,8 @@ class _$ApplyCouponImpl implements _ApplyCoupon {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetCourseList value)? getCourseList,
+    TResult? Function(GetCourseList value)? getCourseList,
+    TResult? Function(SearchCourseList value)? searchCourseList,
     TResult? Function(_GetCourse value)? getCourse,
     TResult? Function(_GetVideo value)? getVideo,
     TResult? Function(_ChangeChapterIndex value)? changeChapterIndex,
@@ -1497,7 +1790,8 @@ class _$ApplyCouponImpl implements _ApplyCoupon {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetCourseList value)? getCourseList,
+    TResult Function(GetCourseList value)? getCourseList,
+    TResult Function(SearchCourseList value)? searchCourseList,
     TResult Function(_GetCourse value)? getCourse,
     TResult Function(_GetVideo value)? getVideo,
     TResult Function(_ChangeChapterIndex value)? changeChapterIndex,
@@ -1540,8 +1834,8 @@ mixin _$CourseListState {
   VideoPlayerController? get videoPlayerController1 =>
       throw _privateConstructorUsedError;
   ChewieController? get chewieController => throw _privateConstructorUsedError;
-  List<VideoGetModel> get videoList => throw _privateConstructorUsedError;
-  CourseList? get freecourseList => throw _privateConstructorUsedError;
+  List<VideoGetModel> get videoList =>
+      throw _privateConstructorUsedError; //  CourseList? freecourseList,
   CourseList? get instructorCourseList => throw _privateConstructorUsedError;
   String? get videoOutSidePauseState => throw _privateConstructorUsedError;
   CourseGet? get courseGet => throw _privateConstructorUsedError;
@@ -1579,7 +1873,6 @@ abstract class $CourseListStateCopyWith<$Res> {
       VideoPlayerController? videoPlayerController1,
       ChewieController? chewieController,
       List<VideoGetModel> videoList,
-      CourseList? freecourseList,
       CourseList? instructorCourseList,
       String? videoOutSidePauseState,
       CourseGet? courseGet,
@@ -1616,7 +1909,6 @@ class _$CourseListStateCopyWithImpl<$Res, $Val extends CourseListState>
     Object? videoPlayerController1 = freezed,
     Object? chewieController = freezed,
     Object? videoList = null,
-    Object? freecourseList = freezed,
     Object? instructorCourseList = freezed,
     Object? videoOutSidePauseState = freezed,
     Object? courseGet = freezed,
@@ -1665,10 +1957,6 @@ class _$CourseListStateCopyWithImpl<$Res, $Val extends CourseListState>
           ? _value.videoList
           : videoList // ignore: cast_nullable_to_non_nullable
               as List<VideoGetModel>,
-      freecourseList: freezed == freecourseList
-          ? _value.freecourseList
-          : freecourseList // ignore: cast_nullable_to_non_nullable
-              as CourseList?,
       instructorCourseList: freezed == instructorCourseList
           ? _value.instructorCourseList
           : instructorCourseList // ignore: cast_nullable_to_non_nullable
@@ -1732,7 +2020,6 @@ abstract class _$$CourseListStateImplCopyWith<$Res>
       VideoPlayerController? videoPlayerController1,
       ChewieController? chewieController,
       List<VideoGetModel> videoList,
-      CourseList? freecourseList,
       CourseList? instructorCourseList,
       String? videoOutSidePauseState,
       CourseGet? courseGet,
@@ -1767,7 +2054,6 @@ class __$$CourseListStateImplCopyWithImpl<$Res>
     Object? videoPlayerController1 = freezed,
     Object? chewieController = freezed,
     Object? videoList = null,
-    Object? freecourseList = freezed,
     Object? instructorCourseList = freezed,
     Object? videoOutSidePauseState = freezed,
     Object? courseGet = freezed,
@@ -1816,10 +2102,6 @@ class __$$CourseListStateImplCopyWithImpl<$Res>
           ? _value._videoList
           : videoList // ignore: cast_nullable_to_non_nullable
               as List<VideoGetModel>,
-      freecourseList: freezed == freecourseList
-          ? _value.freecourseList
-          : freecourseList // ignore: cast_nullable_to_non_nullable
-              as CourseList?,
       instructorCourseList: freezed == instructorCourseList
           ? _value.instructorCourseList
           : instructorCourseList // ignore: cast_nullable_to_non_nullable
@@ -1878,7 +2160,6 @@ class _$CourseListStateImpl implements _CourseListState {
       this.videoPlayerController1,
       this.chewieController,
       final List<VideoGetModel> videoList = const [],
-      this.freecourseList,
       this.instructorCourseList,
       this.videoOutSidePauseState,
       this.courseGet,
@@ -1917,8 +2198,7 @@ class _$CourseListStateImpl implements _CourseListState {
     return EqualUnmodifiableListView(_videoList);
   }
 
-  @override
-  final CourseList? freecourseList;
+//  CourseList? freecourseList,
   @override
   final CourseList? instructorCourseList;
   @override
@@ -1951,7 +2231,7 @@ class _$CourseListStateImpl implements _CourseListState {
 
   @override
   String toString() {
-    return 'CourseListState(isLoading: $isLoading, videoLoading: $videoLoading, totalPages: $totalPages, page: $page, loadMore: $loadMore, courseList: $courseList, videoPlayerController1: $videoPlayerController1, chewieController: $chewieController, videoList: $videoList, freecourseList: $freecourseList, instructorCourseList: $instructorCourseList, videoOutSidePauseState: $videoOutSidePauseState, courseGet: $courseGet, chapterIndex: $chapterIndex, coupenModel: $coupenModel, chapterdId: $chapterdId, courseGetFailureOrSuccessOption: $courseGetFailureOrSuccessOption, coupenModelFailureOrSuccessOption: $coupenModelFailureOrSuccessOption, videoGetFailureOrSuccessOption: $videoGetFailureOrSuccessOption, languageFailureOrSuccessOption: $languageFailureOrSuccessOption)';
+    return 'CourseListState(isLoading: $isLoading, videoLoading: $videoLoading, totalPages: $totalPages, page: $page, loadMore: $loadMore, courseList: $courseList, videoPlayerController1: $videoPlayerController1, chewieController: $chewieController, videoList: $videoList, instructorCourseList: $instructorCourseList, videoOutSidePauseState: $videoOutSidePauseState, courseGet: $courseGet, chapterIndex: $chapterIndex, coupenModel: $coupenModel, chapterdId: $chapterdId, courseGetFailureOrSuccessOption: $courseGetFailureOrSuccessOption, coupenModelFailureOrSuccessOption: $coupenModelFailureOrSuccessOption, videoGetFailureOrSuccessOption: $videoGetFailureOrSuccessOption, languageFailureOrSuccessOption: $languageFailureOrSuccessOption)';
   }
 
   @override
@@ -1976,8 +2256,6 @@ class _$CourseListStateImpl implements _CourseListState {
                 other.chewieController == chewieController) &&
             const DeepCollectionEquality()
                 .equals(other._videoList, _videoList) &&
-            (identical(other.freecourseList, freecourseList) ||
-                other.freecourseList == freecourseList) &&
             (identical(other.instructorCourseList, instructorCourseList) ||
                 other.instructorCourseList == instructorCourseList) &&
             (identical(other.videoOutSidePauseState, videoOutSidePauseState) ||
@@ -2020,7 +2298,6 @@ class _$CourseListStateImpl implements _CourseListState {
         videoPlayerController1,
         chewieController,
         const DeepCollectionEquality().hash(_videoList),
-        freecourseList,
         instructorCourseList,
         videoOutSidePauseState,
         courseGet,
@@ -2052,7 +2329,6 @@ abstract class _CourseListState implements CourseListState {
       final VideoPlayerController? videoPlayerController1,
       final ChewieController? chewieController,
       final List<VideoGetModel> videoList,
-      final CourseList? freecourseList,
       final CourseList? instructorCourseList,
       final String? videoOutSidePauseState,
       final CourseGet? courseGet,
@@ -2086,9 +2362,7 @@ abstract class _CourseListState implements CourseListState {
   ChewieController? get chewieController;
   @override
   List<VideoGetModel> get videoList;
-  @override
-  CourseList? get freecourseList;
-  @override
+  @override //  CourseList? freecourseList,
   CourseList? get instructorCourseList;
   @override
   String? get videoOutSidePauseState;

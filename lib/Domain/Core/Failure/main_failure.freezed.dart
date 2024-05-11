@@ -20,6 +20,7 @@ mixin _$MainFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() clientFailure,
     required TResult Function(String? message) serverFailure,
+    required TResult Function() networkFailure,
     required TResult Function(String? message) unAuthorisedException,
     required TResult Function(String? message) badRequestException,
   }) =>
@@ -28,6 +29,7 @@ mixin _$MainFailure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? clientFailure,
     TResult? Function(String? message)? serverFailure,
+    TResult? Function()? networkFailure,
     TResult? Function(String? message)? unAuthorisedException,
     TResult? Function(String? message)? badRequestException,
   }) =>
@@ -36,6 +38,7 @@ mixin _$MainFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? clientFailure,
     TResult Function(String? message)? serverFailure,
+    TResult Function()? networkFailure,
     TResult Function(String? message)? unAuthorisedException,
     TResult Function(String? message)? badRequestException,
     required TResult orElse(),
@@ -45,6 +48,7 @@ mixin _$MainFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(_CilentFailure value) clientFailure,
     required TResult Function(_ServerFailure value) serverFailure,
+    required TResult Function(_NetworkFailure value) networkFailure,
     required TResult Function(_UnAuthorisedException value)
         unAuthorisedException,
     required TResult Function(_BadRequestException value) badRequestException,
@@ -54,6 +58,7 @@ mixin _$MainFailure {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_CilentFailure value)? clientFailure,
     TResult? Function(_ServerFailure value)? serverFailure,
+    TResult? Function(_NetworkFailure value)? networkFailure,
     TResult? Function(_UnAuthorisedException value)? unAuthorisedException,
     TResult? Function(_BadRequestException value)? badRequestException,
   }) =>
@@ -62,6 +67,7 @@ mixin _$MainFailure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CilentFailure value)? clientFailure,
     TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(_NetworkFailure value)? networkFailure,
     TResult Function(_UnAuthorisedException value)? unAuthorisedException,
     TResult Function(_BadRequestException value)? badRequestException,
     required TResult orElse(),
@@ -127,6 +133,7 @@ class _$CilentFailureImpl implements _CilentFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() clientFailure,
     required TResult Function(String? message) serverFailure,
+    required TResult Function() networkFailure,
     required TResult Function(String? message) unAuthorisedException,
     required TResult Function(String? message) badRequestException,
   }) {
@@ -138,6 +145,7 @@ class _$CilentFailureImpl implements _CilentFailure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? clientFailure,
     TResult? Function(String? message)? serverFailure,
+    TResult? Function()? networkFailure,
     TResult? Function(String? message)? unAuthorisedException,
     TResult? Function(String? message)? badRequestException,
   }) {
@@ -149,6 +157,7 @@ class _$CilentFailureImpl implements _CilentFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? clientFailure,
     TResult Function(String? message)? serverFailure,
+    TResult Function()? networkFailure,
     TResult Function(String? message)? unAuthorisedException,
     TResult Function(String? message)? badRequestException,
     required TResult orElse(),
@@ -164,6 +173,7 @@ class _$CilentFailureImpl implements _CilentFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(_CilentFailure value) clientFailure,
     required TResult Function(_ServerFailure value) serverFailure,
+    required TResult Function(_NetworkFailure value) networkFailure,
     required TResult Function(_UnAuthorisedException value)
         unAuthorisedException,
     required TResult Function(_BadRequestException value) badRequestException,
@@ -176,6 +186,7 @@ class _$CilentFailureImpl implements _CilentFailure {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_CilentFailure value)? clientFailure,
     TResult? Function(_ServerFailure value)? serverFailure,
+    TResult? Function(_NetworkFailure value)? networkFailure,
     TResult? Function(_UnAuthorisedException value)? unAuthorisedException,
     TResult? Function(_BadRequestException value)? badRequestException,
   }) {
@@ -187,6 +198,7 @@ class _$CilentFailureImpl implements _CilentFailure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CilentFailure value)? clientFailure,
     TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(_NetworkFailure value)? networkFailure,
     TResult Function(_UnAuthorisedException value)? unAuthorisedException,
     TResult Function(_BadRequestException value)? badRequestException,
     required TResult orElse(),
@@ -268,6 +280,7 @@ class _$ServerFailureImpl implements _ServerFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() clientFailure,
     required TResult Function(String? message) serverFailure,
+    required TResult Function() networkFailure,
     required TResult Function(String? message) unAuthorisedException,
     required TResult Function(String? message) badRequestException,
   }) {
@@ -279,6 +292,7 @@ class _$ServerFailureImpl implements _ServerFailure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? clientFailure,
     TResult? Function(String? message)? serverFailure,
+    TResult? Function()? networkFailure,
     TResult? Function(String? message)? unAuthorisedException,
     TResult? Function(String? message)? badRequestException,
   }) {
@@ -290,6 +304,7 @@ class _$ServerFailureImpl implements _ServerFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? clientFailure,
     TResult Function(String? message)? serverFailure,
+    TResult Function()? networkFailure,
     TResult Function(String? message)? unAuthorisedException,
     TResult Function(String? message)? badRequestException,
     required TResult orElse(),
@@ -305,6 +320,7 @@ class _$ServerFailureImpl implements _ServerFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(_CilentFailure value) clientFailure,
     required TResult Function(_ServerFailure value) serverFailure,
+    required TResult Function(_NetworkFailure value) networkFailure,
     required TResult Function(_UnAuthorisedException value)
         unAuthorisedException,
     required TResult Function(_BadRequestException value) badRequestException,
@@ -317,6 +333,7 @@ class _$ServerFailureImpl implements _ServerFailure {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_CilentFailure value)? clientFailure,
     TResult? Function(_ServerFailure value)? serverFailure,
+    TResult? Function(_NetworkFailure value)? networkFailure,
     TResult? Function(_UnAuthorisedException value)? unAuthorisedException,
     TResult? Function(_BadRequestException value)? badRequestException,
   }) {
@@ -328,6 +345,7 @@ class _$ServerFailureImpl implements _ServerFailure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CilentFailure value)? clientFailure,
     TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(_NetworkFailure value)? networkFailure,
     TResult Function(_UnAuthorisedException value)? unAuthorisedException,
     TResult Function(_BadRequestException value)? badRequestException,
     required TResult orElse(),
@@ -346,6 +364,127 @@ abstract class _ServerFailure implements MainFailure {
   @JsonKey(ignore: true)
   _$$ServerFailureImplCopyWith<_$ServerFailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$NetworkFailureImplCopyWith<$Res> {
+  factory _$$NetworkFailureImplCopyWith(_$NetworkFailureImpl value,
+          $Res Function(_$NetworkFailureImpl) then) =
+      __$$NetworkFailureImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NetworkFailureImplCopyWithImpl<$Res>
+    extends _$MainFailureCopyWithImpl<$Res, _$NetworkFailureImpl>
+    implements _$$NetworkFailureImplCopyWith<$Res> {
+  __$$NetworkFailureImplCopyWithImpl(
+      _$NetworkFailureImpl _value, $Res Function(_$NetworkFailureImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$NetworkFailureImpl implements _NetworkFailure {
+  const _$NetworkFailureImpl();
+
+  @override
+  String toString() {
+    return 'MainFailure.networkFailure()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$NetworkFailureImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() clientFailure,
+    required TResult Function(String? message) serverFailure,
+    required TResult Function() networkFailure,
+    required TResult Function(String? message) unAuthorisedException,
+    required TResult Function(String? message) badRequestException,
+  }) {
+    return networkFailure();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? clientFailure,
+    TResult? Function(String? message)? serverFailure,
+    TResult? Function()? networkFailure,
+    TResult? Function(String? message)? unAuthorisedException,
+    TResult? Function(String? message)? badRequestException,
+  }) {
+    return networkFailure?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? clientFailure,
+    TResult Function(String? message)? serverFailure,
+    TResult Function()? networkFailure,
+    TResult Function(String? message)? unAuthorisedException,
+    TResult Function(String? message)? badRequestException,
+    required TResult orElse(),
+  }) {
+    if (networkFailure != null) {
+      return networkFailure();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CilentFailure value) clientFailure,
+    required TResult Function(_ServerFailure value) serverFailure,
+    required TResult Function(_NetworkFailure value) networkFailure,
+    required TResult Function(_UnAuthorisedException value)
+        unAuthorisedException,
+    required TResult Function(_BadRequestException value) badRequestException,
+  }) {
+    return networkFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CilentFailure value)? clientFailure,
+    TResult? Function(_ServerFailure value)? serverFailure,
+    TResult? Function(_NetworkFailure value)? networkFailure,
+    TResult? Function(_UnAuthorisedException value)? unAuthorisedException,
+    TResult? Function(_BadRequestException value)? badRequestException,
+  }) {
+    return networkFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CilentFailure value)? clientFailure,
+    TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(_NetworkFailure value)? networkFailure,
+    TResult Function(_UnAuthorisedException value)? unAuthorisedException,
+    TResult Function(_BadRequestException value)? badRequestException,
+    required TResult orElse(),
+  }) {
+    if (networkFailure != null) {
+      return networkFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NetworkFailure implements MainFailure {
+  const factory _NetworkFailure() = _$NetworkFailureImpl;
 }
 
 /// @nodoc
@@ -416,6 +555,7 @@ class _$UnAuthorisedExceptionImpl implements _UnAuthorisedException {
   TResult when<TResult extends Object?>({
     required TResult Function() clientFailure,
     required TResult Function(String? message) serverFailure,
+    required TResult Function() networkFailure,
     required TResult Function(String? message) unAuthorisedException,
     required TResult Function(String? message) badRequestException,
   }) {
@@ -427,6 +567,7 @@ class _$UnAuthorisedExceptionImpl implements _UnAuthorisedException {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? clientFailure,
     TResult? Function(String? message)? serverFailure,
+    TResult? Function()? networkFailure,
     TResult? Function(String? message)? unAuthorisedException,
     TResult? Function(String? message)? badRequestException,
   }) {
@@ -438,6 +579,7 @@ class _$UnAuthorisedExceptionImpl implements _UnAuthorisedException {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? clientFailure,
     TResult Function(String? message)? serverFailure,
+    TResult Function()? networkFailure,
     TResult Function(String? message)? unAuthorisedException,
     TResult Function(String? message)? badRequestException,
     required TResult orElse(),
@@ -453,6 +595,7 @@ class _$UnAuthorisedExceptionImpl implements _UnAuthorisedException {
   TResult map<TResult extends Object?>({
     required TResult Function(_CilentFailure value) clientFailure,
     required TResult Function(_ServerFailure value) serverFailure,
+    required TResult Function(_NetworkFailure value) networkFailure,
     required TResult Function(_UnAuthorisedException value)
         unAuthorisedException,
     required TResult Function(_BadRequestException value) badRequestException,
@@ -465,6 +608,7 @@ class _$UnAuthorisedExceptionImpl implements _UnAuthorisedException {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_CilentFailure value)? clientFailure,
     TResult? Function(_ServerFailure value)? serverFailure,
+    TResult? Function(_NetworkFailure value)? networkFailure,
     TResult? Function(_UnAuthorisedException value)? unAuthorisedException,
     TResult? Function(_BadRequestException value)? badRequestException,
   }) {
@@ -476,6 +620,7 @@ class _$UnAuthorisedExceptionImpl implements _UnAuthorisedException {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CilentFailure value)? clientFailure,
     TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(_NetworkFailure value)? networkFailure,
     TResult Function(_UnAuthorisedException value)? unAuthorisedException,
     TResult Function(_BadRequestException value)? badRequestException,
     required TResult orElse(),
@@ -564,6 +709,7 @@ class _$BadRequestExceptionImpl implements _BadRequestException {
   TResult when<TResult extends Object?>({
     required TResult Function() clientFailure,
     required TResult Function(String? message) serverFailure,
+    required TResult Function() networkFailure,
     required TResult Function(String? message) unAuthorisedException,
     required TResult Function(String? message) badRequestException,
   }) {
@@ -575,6 +721,7 @@ class _$BadRequestExceptionImpl implements _BadRequestException {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? clientFailure,
     TResult? Function(String? message)? serverFailure,
+    TResult? Function()? networkFailure,
     TResult? Function(String? message)? unAuthorisedException,
     TResult? Function(String? message)? badRequestException,
   }) {
@@ -586,6 +733,7 @@ class _$BadRequestExceptionImpl implements _BadRequestException {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? clientFailure,
     TResult Function(String? message)? serverFailure,
+    TResult Function()? networkFailure,
     TResult Function(String? message)? unAuthorisedException,
     TResult Function(String? message)? badRequestException,
     required TResult orElse(),
@@ -601,6 +749,7 @@ class _$BadRequestExceptionImpl implements _BadRequestException {
   TResult map<TResult extends Object?>({
     required TResult Function(_CilentFailure value) clientFailure,
     required TResult Function(_ServerFailure value) serverFailure,
+    required TResult Function(_NetworkFailure value) networkFailure,
     required TResult Function(_UnAuthorisedException value)
         unAuthorisedException,
     required TResult Function(_BadRequestException value) badRequestException,
@@ -613,6 +762,7 @@ class _$BadRequestExceptionImpl implements _BadRequestException {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_CilentFailure value)? clientFailure,
     TResult? Function(_ServerFailure value)? serverFailure,
+    TResult? Function(_NetworkFailure value)? networkFailure,
     TResult? Function(_UnAuthorisedException value)? unAuthorisedException,
     TResult? Function(_BadRequestException value)? badRequestException,
   }) {
@@ -624,6 +774,7 @@ class _$BadRequestExceptionImpl implements _BadRequestException {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CilentFailure value)? clientFailure,
     TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(_NetworkFailure value)? networkFailure,
     TResult Function(_UnAuthorisedException value)? unAuthorisedException,
     TResult Function(_BadRequestException value)? badRequestException,
     required TResult orElse(),

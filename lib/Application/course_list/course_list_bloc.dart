@@ -1,22 +1,22 @@
 import 'dart:developer';
-import 'dart:math';
 import 'package:bloc/bloc.dart';
-import 'package:chewie/chewie.dart';
 import 'package:dartz/dartz.dart';
+import '../../Config/routers.dart';
+import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:video_player/video_player.dart';
+import '../../Domain/CourseList/Model/course_list.dart';
+import 'package:number_one_academy_v2/Utils/colors.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:number_one_academy_v2/Utils/toast_urils.dart';
 import 'package:number_one_academy_v2/Domain/Core/Failure/main_failure.dart';
 import 'package:number_one_academy_v2/Domain/Coupon/Model/coupon_model.dart';
-import 'package:number_one_academy_v2/Domain/Languages/Service/course_services.dart';
 import 'package:number_one_academy_v2/Domain/CourseGet/Model/course_get.dart';
 import 'package:number_one_academy_v2/Domain/VideoGet/Model/video_get_model.dart';
-import 'package:number_one_academy_v2/Utils/colors.dart';
-import 'package:number_one_academy_v2/Utils/toast_urils.dart';
-import 'package:video_player/video_player.dart';
-import '../../Config/routers.dart';
-import '../../Domain/CourseList/Model/course_list.dart';
+import 'package:number_one_academy_v2/Domain/Languages/Service/course_services.dart';
+
 part 'course_list_bloc.freezed.dart';
 part 'course_list_event.dart';
 part 'course_list_state.dart';
@@ -27,8 +27,48 @@ class CourseListBloc extends Bloc<CourseListEvent, CourseListState> {
   ChewieController? _chewieController;
   final CourseService _courseService;
   CourseListBloc(this._courseService) : super(CourseListState.initial()) {
-    on<_GetCourseList>((event, emit) async {
-      debugPrint("get course function calling");
+    on<SearchCourseList>((event, emit) async {
+      if (event.previousPage && state.page != 0) {
+        int pageIn = state.page - 1;
+        emit(state.copyWith(page: pageIn));
+      } else {
+        log('page ${state.page}');
+      }
+      if (state.page <= state.totalPages || state.totalPages == 0) {
+        emit(state.copyWith(isLoading: true));
+
+        final searchCourceList = await _courseService.getCourseList(
+            search: event.search,
+            instructorId: '',
+            perPage: 8,
+            page: state.page);
+        searchCourceList.fold((l) {
+          emit(state.copyWith(
+              isLoading: false,
+              loadMore: true,
+              languageFailureOrSuccessOption: Some(left(l))));
+          handleError(
+            error: l,
+            routeName: Routers.mainPage,
+          );
+        }, (r) {
+          int pageIn = event.nextPage ? state.page + 1 : state.page;
+          emit(state.copyWith(
+            // freecourseList: courseListfreeModel,
+            page: pageIn,
+            totalPages: r.totalPages ?? 0,
+            isLoading: false,
+            loadMore: false,
+            courseList: r,
+            languageFailureOrSuccessOption: Some(right(r)),
+          ));
+        });
+      } else {
+        log("total page ${state.totalPages}");
+      }
+    });
+    on<GetCourseList>((event, emit) async {
+      debugPrint("get course function calling ${event.search}");
       emit(
         state.copyWith(
             isLoading: true,
@@ -44,7 +84,7 @@ class CourseListBloc extends Bloc<CourseListEvent, CourseListState> {
               search: event.search,
               perPage: 8,
               page: 1,
-              free: false,
+              // free: false,
               instructorId: event.instructorId);
           instructorCourseList.fold((failure) {
             emit(state.copyWith(
@@ -76,16 +116,16 @@ class CourseListBloc extends Bloc<CourseListEvent, CourseListState> {
         }
         final courseList = await _courseService.getCourseList(
             instructorId: '',
-            free: false,
+            // free: false,
             page: state.page,
             search: event.search,
             perPage: 8);
-        final freecourseList = await _courseService.getCourseList(
-            instructorId: '',
-            free: true,
-            page: state.page,
-            search: event.search,
-            perPage: 8);
+        // final freecourseList = await _courseService.getCourseList(
+        //     instructorId: '',
+        //     free: true,
+        //     page: state.page,
+        //     search: event.search,
+        //     perPage: 8);
         courseList.fold((failure) {
           emit(state.copyWith(
               isLoading: false,
@@ -96,40 +136,42 @@ class CourseListBloc extends Bloc<CourseListEvent, CourseListState> {
             routeName: Routers.mainPage,
           );
         }, (success) {
-          List<ListElement>? courselist =
-              List<ListElement>.from(state.courseList?.list ?? []);
-          List<ListElement>? freeCourselist =
-              List<ListElement>.from(state.freecourseList?.list ?? []);
+          // List<ListElement>? courselist =
+          //     List<ListElement>.from(state.courseList?.list ?? []);
+          // List<ListElement>? freeCourselist =
+          //     List<ListElement>.from(state.freecourseList?.list ?? []);
 
-          courselist.addAll(success.list ?? []);
-          var courseListModel = CourseList(
-              currentPage: success.currentPage,
-              list: courselist,
-              perPageCount: success.perPageCount,
-              sortAttributes: success.sortAttributes,
-              sortOrders: success.sortAttributes,
-              totalPages: success.totalPages);
+          // courselist.addAll(success.list ?? []);
+          // var courseListModel = CourseList(
+          //     currentPage: success.currentPage,
+          //     list: courselist,
+          //     perPageCount: success.perPageCount,
+          //     sortAttributes: success.sortAttributes,
+          //     sortOrders: success.sortAttributes,
+          //     totalPages: success.totalPages);
 
-          var courseListfreeModel = CourseList(
-              currentPage: success.currentPage,
-              list: freeCourselist,
-              perPageCount: success.perPageCount,
-              sortAttributes: success.sortAttributes,
-              sortOrders: success.sortAttributes,
-              totalPages: success.totalPages);
+          // var courseListfreeModel = CourseList(
+          //     currentPage: success.currentPage,
+          //     list: freeCourselist,
+          //     perPageCount: success.perPageCount,
+          //     sortAttributes: success.sortAttributes,
+          //     sortOrders: success.sortAttributes,
+          //     totalPages: success.totalPages);
           int pageIn = state.page + 1;
 
           emit(state.copyWith(
-            freecourseList: courseListfreeModel,
+            // freecourseList: courseListfreeModel,
             page: pageIn,
             totalPages: success.totalPages ?? 0,
             isLoading: false,
             loadMore: false,
-            courseList: courseListModel,
+            courseList: success,
             languageFailureOrSuccessOption: Some(right(success)),
           ));
         });
-      } else {}
+      } else {
+        emit(state.copyWith(isLoading: false));
+      }
     });
     on<_GetCourse>((event, emit) async {
       emit(state.copyWith(
@@ -191,7 +233,7 @@ class CourseListBloc extends Bloc<CourseListEvent, CourseListState> {
 
           if (_videoPlayerController1!.value.position ==
               _videoPlayerController1!.value.duration) {
-                          debugPrint("duration check ");
+            debugPrint("duration check ");
 
             debugPrint("chapter index : ${state.chapterIndex}");
             if (state.chapterIndex! < state.videoList.length - 1) {
@@ -203,8 +245,8 @@ class CourseListBloc extends Bloc<CourseListEvent, CourseListState> {
               //   _currentIndex++;
               // });
               add(CourseListEvent.changeChapterIndex(
-                  index: state.chapterIndex!+1));
-                    print("Chapter Index${state.chapterIndex!+1}");
+                  index: state.chapterIndex! + 1));
+              print("Chapter Index${state.chapterIndex! + 1}");
               // state.chewieController!.dispose(); // Dispose the current controller
               // initializePlayer(); // Initialize with the next video
             } else {

@@ -9,22 +9,19 @@ class CourseListState with _$CourseListState {
     required int page,
     required bool loadMore,
     CourseList? courseList,
-          VideoPlayerController? videoPlayerController1,
-   ChewieController? chewieController,
-
-   @Default([]) List<VideoGetModel> videoList,
-     CourseList? freecourseList,
-          CourseList? instructorCourseList,
-
+    VideoPlayerController? videoPlayerController1,
+    ChewieController? chewieController,
+    @Default([]) List<VideoGetModel> videoList,
+    //  CourseList? freecourseList,
+    CourseList? instructorCourseList,
     String? videoOutSidePauseState,
     CourseGet? courseGet,
     int? chapterIndex,
-        CoupenModel? coupenModel,
-      @Default([])   List<String> chapterdId,
-
+    CoupenModel? coupenModel,
+    @Default([]) List<String> chapterdId,
     required Option<Either<MainFailure, CourseGet>>
         courseGetFailureOrSuccessOption,
-        required Option<Either<MainFailure, CoupenModel>>
+    required Option<Either<MainFailure, CoupenModel>>
         coupenModelFailureOrSuccessOption,
     required Option<Either<MainFailure, List<VideoGetModel>>>
         videoGetFailureOrSuccessOption,
@@ -35,12 +32,9 @@ class CourseListState with _$CourseListState {
   // starting video
 
   factory CourseListState.initial() {
-                  
-    return  const CourseListState(
-      
-
+    return const CourseListState(
       chapterIndex: 0,
-        videoOutSidePauseState: null,
+      videoOutSidePauseState: null,
       coupenModelFailureOrSuccessOption: None(),
       page: 1,
       totalPages: 1,

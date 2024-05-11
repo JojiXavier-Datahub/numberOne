@@ -1,17 +1,16 @@
-import 'dart:collection';
-import 'dart:developer';
 import 'dart:io';
-
-import 'package:dartz/dartz.dart';
+import 'dart:developer';
+import 'dart:collection';
 import 'package:dio/dio.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
-import 'package:number_one_academy_v2/Domain/Core/Failure/main_failure.dart';
-import 'package:number_one_academy_v2/Domain/Core/NetworkServices/network_services.dart';
-import 'package:number_one_academy_v2/Domain/Core/api_endpoints.dart';
+import 'package:number_one_academy_v2/Utils/constants.dart';
 import 'package:number_one_academy_v2/Infrastrutcure/api_key.dart';
 import 'package:number_one_academy_v2/Utils/Helper/shared_pref.dart';
-import 'package:number_one_academy_v2/Utils/constants.dart';
+import 'package:number_one_academy_v2/Domain/Core/api_endpoints.dart';
+import 'package:number_one_academy_v2/Domain/Core/Failure/main_failure.dart';
+import 'package:number_one_academy_v2/Domain/Core/NetworkServices/network_services.dart';
 
 @LazySingleton(as: NetworkService)
 class NetworkHelper implements NetworkService {
@@ -82,7 +81,10 @@ class NetworkHelper implements NetworkService {
       result = _returnResponse(
           await _dio.get(url, queryParameters: queryParameters));
     } catch (e) {
-      if (e is DioError) {
+      if (e is DioException) {
+        if (e.type == DioExceptionType.connectionError) {
+          result = left(const MainFailure.networkFailure());
+        }
         if (e.error is SocketException) {
           result = left(const MainFailure.clientFailure());
         } else if (e.response != null) {
@@ -105,7 +107,10 @@ class NetworkHelper implements NetworkService {
     try {
       result = _returnResponse(await _dio.post(url, data: body));
     } catch (e) {
-      if (e is DioError) {
+      if (e is DioException) {
+        if (e.type == DioExceptionType.connectionError) {
+          result = left(const MainFailure.networkFailure());
+        }
         if (e.error is SocketException) {
           result = left(const MainFailure.clientFailure());
         } else {
@@ -129,7 +134,10 @@ class NetworkHelper implements NetworkService {
     try {
       result = _returnResponse(await _dio.put(url, data: body));
     } catch (e) {
-      if (e is DioError) {
+      if (e is DioException) {
+        if (e.type == DioExceptionType.connectionError) {
+          result = left(const MainFailure.networkFailure());
+        }
         if (e.error is SocketException) {
           result = left(const MainFailure.clientFailure());
         } else {
@@ -155,7 +163,10 @@ class NetworkHelper implements NetworkService {
     } on SocketException {
       result = left(const MainFailure.clientFailure());
     } catch (e) {
-      if (e is DioError) {
+      if (e is DioException) {
+        if (e.type == DioExceptionType.connectionError) {
+          result = left(const MainFailure.networkFailure());
+        }
         if (e.error is SocketException) {
           result = left(const MainFailure.clientFailure());
         } else if (e.response != null) {
@@ -187,6 +198,8 @@ class NetworkHelper implements NetworkService {
         var responseJson = response.data;
         return left(MainFailure.unAuthorisedException(
             responseJson["message"].toString()));
+      case 503:
+        return left(const MainFailure.networkFailure());
       case 500:
       default:
         return left(MainFailure.serverFailure(
